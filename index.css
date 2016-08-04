@@ -21,8 +21,30 @@
 
 body {
   background-color: #C2C3C7;
+  overflow: hidden;
 }
 
 .why {
   font-size: 50px;
+  transition: margin 1s;
+}
+
+.hand {
+  opacity: 0;
+  display: block;
+  position: absolute;
+  width: 500px;
+  margin-top: 50px;
+  left: 50%;
+  margin-left: -250px;
+  cursor: pointer;
+  transition: opacity 500ms;
+}
+
+.hand.showing {
+  opacity: 0.75;
+}
+
+.hand.showing:hover {
+  opacity: 1;
 }

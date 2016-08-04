@@ -20,33 +20,33 @@
 
 
 body {
-  background-color: #C2C3C7;
+  background-color: #FF004D;
   overflow: hidden;
   text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 300px;
+  color: #FFA300;
+  -webkit-user-select: none;
   user-select: none;
-}
-
-.why {
-  font-size: 50px;
-  transition: margin 1s;
-}
-
-.hand {
-  opacity: 0;
-  display: block;
-  position: absolute;
-  width: 500px;
-  margin-top: 50px;
-  left: 50%;
-  margin-left: -250px;
   cursor: pointer;
-  transition: opacity 500ms;
+
 }
 
-.hand.showing {
-  opacity: 0.75;
+.tree {
+  background-color: black;
+  width: 60px;
+  height: 600px;
+  position: absolute;
 }
 
-.hand.showing:hover {
-  opacity: 1;
+.count {
+  font-size: 100px;
+  color: #FFF1E8;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  font-family: 'Space Mono', monospace;
+  z-index: 1;
+  display: none;
 }

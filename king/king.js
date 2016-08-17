@@ -52,7 +52,6 @@ function bindAnswerSubmission() {
 
 
 function main() {
-  console.log('I am ready');
   displayPrompt();
   bindAnswerSubmission();
 }

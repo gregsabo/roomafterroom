@@ -1,0 +1,13 @@
+body {
+  margin-top: 300px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+}
+
+.answer-input {
+  outline-width: 0;
+}
+
+.answer-input, .prompt-text {
+  font-size: 50px;
+}

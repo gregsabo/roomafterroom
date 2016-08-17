@@ -1,4 +1,3 @@
-'use strict';
 var $ = window.jQuery;
 var _ = window._;
 

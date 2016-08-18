@@ -58,3 +58,4 @@ function main() {
 
 
 window.RoomAfterRoom.onReady(main);
+window.RoomAfterRoom.setNextRoom('../');

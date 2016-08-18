@@ -11,8 +11,13 @@ var RoomAfterRoom = {
   removePoints: function(numPoints) {
     score -= numPoints;
     RoomAfterRoom.updateScoreDisplay();
-    if (score <= 0 && nextRoom) {
-      window.location = nextRoom;
+    if (score <= 0) {
+      if (nextRoom) {
+        window.location = nextRoom;
+      } else {
+        $('body').empty();
+        alert("you win.");
+      }
     }
   },
 
@@ -51,6 +56,8 @@ window.Random = {
     return inArray[Math.floor(Math.random() * inArray.length)];
   }
 };
+
+window.Colors = "#000000 #1D2B53 #7E2553 #008751 #AB5236 #5F574F #C2C3C7 #FFF1E8 #FF004D #FFA300 #FFEC27 #00E436 #29ADFF #83769C #FF77A8 #FFCCAA".split(' ');
 
 $(RoomAfterRoom.initialize);
 window.RoomAfterRoom = RoomAfterRoom;

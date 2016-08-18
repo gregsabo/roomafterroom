@@ -4,6 +4,7 @@ body {
   background-color: black;
   font-size: 30px;
   transition: background-color 100ms;
+  cursor: pointer;
 }
 
 .answer-input {

@@ -18,10 +18,6 @@ function setBackgroundColor(x, y) {
   var yDist = Math.abs(y - targetY) / $(window).width();
   $(yStrand).css({'opacity': Math.min(yDist, 1.0)});
 
-  if (xDist < 0.1 && yDist < 0.1) {
-    chooseNewTarget();
-  }
-
   // $('.strand-a').get(0).playbackRate = Math.abs(targetX - x) / 1000;
   // $('.strand-b').get(0).playbackRate = Math.abs(targetY - y) / 500;
 }
@@ -50,14 +46,12 @@ function clipStrand($el, axis, x, y) {
 }
 
 
-function bindMouseMove() {
-  $('body').mousemove(function(e) {
-    var x = e.pageX;
-    var y = e.pageY;
-    clipStrand($(xStrand), 'x', x, y);
-    clipStrand($(yStrand), 'y', x, y);
-    setBackgroundColor(x, y);
-  });
+function followMouse(e) {
+  var x = e.pageX;
+  var y = e.pageY;
+  clipStrand($(xStrand), 'x', x, y);
+  clipStrand($(yStrand), 'y', x, y);
+  setBackgroundColor(x, y);
 }
 
 function randomRotation(selector) {
@@ -68,11 +62,15 @@ function randomRotation(selector) {
 
 }
 
-function chooseNewTarget(isFirst) {
-  $('body').css({'background-color': "#5F574F"});
+function flashBackground(color) {
+  $('body').css({'background-color': color});
   setTimeout(function() {
     $('body').css({'background-color': 'black'});
   }, 200);
+}
+
+function chooseNewTarget(isFirst) {
+  flashBackground("#5F574F");
 
   STRANDS.forEach(function(sel) {
     $(sel).css({
@@ -87,7 +85,8 @@ function chooseNewTarget(isFirst) {
     yStrand = Random.choose(STRANDS);
   }
   if (!isFirst) {
-    RoomAfterRoom.removePoints(Math.floor(Math.random() * 10));
+    // RoomAfterRoom.removePoints(Math.floor(Math.random() * 10) + 5);
+    RoomAfterRoom.removePoints(10);
     flipX = Math.random() < 0.5;
     flipY = Math.random() < 0.5;
     $('#intro').fadeOut('slow');
@@ -105,10 +104,30 @@ function bindTargetHover() {
   })
 }
 
+function trySpot(e) {
+  var x = e.pageX;
+  var y = e.pageY;
+  var xDist = Math.abs(x - targetX) / $(window).width();
+  var yDist = Math.abs(y - targetY) / $(window).width();
+  if (xDist < 0.1 && yDist < 0.1) {
+    chooseNewTarget();
+    followMouse(e);
+  } else {
+    $('#intro').text('Only click when they dissapear.').show();
+    setTimeout(function() {
+      $('#intro').fadeOut('slow');
+    }, 2000)
+    flashBackground("#FF004D");
+    RoomAfterRoom.removePoints(-1);
+  }
+}
+
+
 function main() {
   chooseNewTarget(true);
   bindTargetHover();
-  bindMouseMove();
+  $('body').mousemove(followMouse);
+  $('body').click(trySpot);
 }
 
 window.RoomAfterRoom.onReady(main);

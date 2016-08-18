@@ -85,8 +85,8 @@ function chooseNewTarget(isFirst) {
     yStrand = Random.choose(STRANDS);
   }
   if (!isFirst) {
-    // RoomAfterRoom.removePoints(Math.floor(Math.random() * 10) + 5);
-    RoomAfterRoom.removePoints(10);
+    RoomAfterRoom.removePoints(Math.floor(Math.random() * 10) + 5);
+    // RoomAfterRoom.removePoints(10);
     flipX = Math.random() < 0.5;
     flipY = Math.random() < 0.5;
     $('#intro').fadeOut('slow');

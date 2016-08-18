@@ -39,7 +39,7 @@ var RoomAfterRoom = {
     if (isReady) {
       RoomAfterRoom.invokeReadyFuncs();
     }
-  }
+  },
 
   setNextRoom: function(str) {
     nextRoom = str;

@@ -1,0 +1,22 @@
+body {
+  /*margin-top: 300px;*/
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+}
+
+.answer-input {
+  outline-width: 0;
+}
+
+.answer-input, .prompt-text {
+  font-size: 50px;
+}
+
+video {
+  width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-clip-path: inset(1000px 1000px 1000px 1000px);
+}
